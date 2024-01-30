@@ -16,7 +16,13 @@ const UserList: React.FC<UserListProps> = ({
 			if (!userIds?.includes(user.id)) return true;
 			return false;
 		})
-		.filter((user) => user.name.toLowerCase().includes(searchTerm.toLowerCase()));
+		// remaining : push to github
+		.filter((user) =>
+			Object.values(user)
+				.join(' ')
+				.toLowerCase()
+				.includes(searchTerm.toLowerCase())
+		);
 
 	const handleClick = (user: IUser) => {
 		setSearchTerm('');
